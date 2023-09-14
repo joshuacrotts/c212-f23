@@ -1,5 +1,22 @@
 public class FactorialLoop {
 
+    static int factLoop(int n) {
+        int acc = 1;
+        while (!(n == 0)) {
+            acc = acc * n;
+            n--;
+        }
+        return acc;
+    }
+
+    static int factForLoop(int n) {
+        int acc = 1;
+        for (int i = 2; i <= n; i++) {
+            acc *= i;
+        }
+        return acc;
+    }
+
     static int factTR(int n) {
         return factTRHelper(n, 1);
     }
