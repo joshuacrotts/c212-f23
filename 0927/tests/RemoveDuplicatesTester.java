@@ -5,7 +5,8 @@ class RemoveDuplicatesTester {
 
     @Test
     void removeDuplicatesTest1() {
-        Assertions.assertArrayEquals(new int[]{5, 6, 2, 3, 4}, RemoveDuplicates.removeDuplicates(new int[]{5, 6, 6, 2, 2, 3, 4, 4}));
+        Assertions.assertArrayEquals(new int[]{5, 6, 2, 3, 4},
+                RemoveDuplicates.removeDuplicates(new int[]{5, 6, 6, 2, 2, 3, 4, 4}));
     }
 
     @Test

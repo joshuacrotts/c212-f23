@@ -21,6 +21,12 @@ class PostfixExpressionParserTest {
     }
 
     @Test
+    void postfixExpressionParserTest5() {
+        ArrayList<String> t = new ArrayList<>(List.of("3", "5", "2", "9", "15", "+"));
+        Assertions.assertEquals(34, PostfixExpressionParser.postfixExpressionParser(t));
+    }
+
+    @Test
     void postfixExpressionParserTest3() {
         ArrayList<String> t = new ArrayList<>();
         Assertions.assertEquals(0, PostfixExpressionParser.postfixExpressionParser(t));

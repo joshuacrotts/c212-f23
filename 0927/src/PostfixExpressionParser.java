@@ -10,7 +10,26 @@ class PostfixExpressionParser {
      * @return result of parsing expression.
      */
     static double postfixExpressionParser(ArrayList<String> tokens) {
-        return 0;
+        if (tokens.isEmpty()) {
+            return 0;
+        } else {
+            Stack<Double> operandStack = new Stack<>();
+            for (String t : tokens) {
+                if (isNumber(t)) {
+                    operandStack.push(Double.parseDouble(t));
+                } else {
+                    char op = t.charAt(0);
+                    LinkedList<Double> operands = new LinkedList<>();
+                    while (!operandStack.isEmpty()) {
+                        operands.addFirst(operandStack.pop());
+                    }
+                    // Process result through eval.
+                    double res = eval(op, operands);
+                    operandStack.push(res);
+                }
+            }
+            return operandStack.pop();
+        }
     }
 
     /**
@@ -57,5 +76,39 @@ class PostfixExpressionParser {
         for(double v : ls1) {
             System.out.println(v);
         }
+
+//        System.out.println(eval('-', ls1));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    static double postfixExpressionParser(ArrayList<String> tokens) {
+//        if (tokens.isEmpty()) { return 0; }
+//        else {
+//            Stack<String> data = new Stack<>();
+//            for (String t : tokens) {
+//                if (isNumber(t)) {
+//                    data.push(t);
+//                } else {
+//                    LinkedList<Double> vals = new LinkedList<>();
+//                    while (!data.isEmpty()) {
+//                        vals.addFirst(Double.parseDouble(data.pop()));
+//                    }
+//                    double res = eval(t.charAt(0), vals);
+//                    data.push(Double.toString(res));
+//                }
+//            }
+//            return Double.parseDouble(data.pop());
+//        }
+//    }
 }
