@@ -19,8 +19,8 @@ class Hangman {
      */
     static void playGame() {
         int numGuesses = MAX_GUESSES;
-        String word = "";                     // Get random word.
-        String board = initializeBoard(word); // Initialize the board.
+        String word = chooseRandomWord(WORDS); // Get random word.
+        String board = initializeBoard(word);  // Initialize the board.
         boolean hasGuessed = false;
         Set<Character> currentGuesses = new HashSet<>();
         do {
@@ -38,7 +38,7 @@ class Hangman {
                 numGuesses--;
             }
             hasGuessed = hasGuessedWord(board);
-        } while (numGuesses > 0);
+        } while (numGuesses > 0 && !hasGuessed);
     }
 
     /**
