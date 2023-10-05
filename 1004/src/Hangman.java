@@ -1,4 +1,6 @@
 import java.util.HashSet;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 class Hangman {
@@ -19,13 +21,13 @@ class Hangman {
      */
     static void playGame() {
         int numGuesses = MAX_GUESSES;
-        String word = chooseRandomWord(WORDS); // Get random word.
+        String word = chooseRandomWord(); // Get random word.
         String board = initializeBoard(word);  // Initialize the board.
         boolean hasGuessed = false;
         Set<Character> currentGuesses = new HashSet<>();
         do {
             // Print the current board.
-            System.out.printf("%s\n", board);
+            System.out.printf("Remaining Guesses: %d\n%s\n", numGuesses, board);
             // Read the guess.
             char guess = readChar();
             // Determine if it's valid, and, if so, add it to the set of guesses.
@@ -39,6 +41,10 @@ class Hangman {
             }
             hasGuessed = hasGuessedWord(board);
         } while (numGuesses > 0 && !hasGuessed);
+
+        System.out.printf("%s\n", board);
+        if (hasGuessed) { System.out.printf("You won!\n"); }
+        else { System.out.printf("You lost! The word was %s\n", word); }
     }
 
     /**
@@ -49,19 +55,16 @@ class Hangman {
      * @return String containing |W| underscores.
      */
     private static String initializeBoard(String word) {
-        // TODO.
-        return null;
+        return "_".repeat(word.length());
     }
 
     /**
      * Returns a random word from an array of words.
      *
-     * @param words - array of words.
      * @return random word.
      */
-    private static String chooseRandomWord(String[] words) {
-        // TODO.
-        return null;
+    private static String chooseRandomWord() {
+        return Hangman.WORDS[new Random().nextInt(Hangman.WORDS.length)];
     }
 
     /**
@@ -71,8 +74,7 @@ class Hangman {
      * @return first char of input string.
      */
     private static char readChar() {
-        // TODO.
-        return '\0';
+        return new Scanner(System.in).nextLine().charAt(0);
     }
 
     /**
@@ -85,8 +87,7 @@ class Hangman {
      * @return true if it's a valid guess and false otherwise.
      */
     private static boolean isValidGuess(String word, char guess, Set<Character> guesses) {
-        // TODO.
-        return false;
+        return word.contains(String.valueOf(guess)) && !guesses.contains(guess);
     }
 
     /**
@@ -99,8 +100,11 @@ class Hangman {
      * @return new string board.
      */
     private static String updateBoard(String oldBoard, String word, char guess) {
-        // TODO.
-        return null;
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < oldBoard.length(); i++) {
+            res.append(word.charAt(i) == guess ? guess : oldBoard.charAt(i));
+        }
+        return res.toString();
     }
 
     /**
@@ -110,8 +114,7 @@ class Hangman {
      * @return true if the board contains no '_' chars and false otherwise.
      */
     public static boolean hasGuessedWord(String board) {
-        // TODO.
-        return false;
+        return !board.contains("_");
     }
 
     public static void main(String[] args) {
