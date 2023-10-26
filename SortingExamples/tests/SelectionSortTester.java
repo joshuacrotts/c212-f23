@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FunctionalSelectionSortTester {
+class SelectionSortTester {
 
     private final AbstractList<Integer> LS1 = new ArrayList<>(List.of(5, 4, 2, 1, 3));
     private final AbstractList<Integer> LS2 = new ArrayList<>(List.of());
@@ -20,6 +20,19 @@ class FunctionalSelectionSortTester {
                 () -> assertEquals(List.of(1, 2, 3, 4, 5), ss.selectionSort(LS1)),
                 () -> assertEquals(List.of(), ss.selectionSort(LS2)),
                 () -> assertEquals(List.of(2, 3, 3, 3, 6, 7, 8, 10, 10, 10), ss.selectionSort(LS3))
+        );
+    }
+
+    @Test
+    void ipqsTester() {
+        ISelectionSort<Integer> ss = new InPlaceSelectionSort<>();
+        assertAll(
+                () -> ss.selectionSort(LS1),
+                () -> assertEquals(List.of(1, 2, 3, 4, 5), LS1),
+                () -> ss.selectionSort(LS2),
+                () -> assertEquals(List.of(), LS2),
+                () -> ss.selectionSort(LS3),
+                () -> assertEquals(List.of(2, 3, 3, 3, 6, 7, 8, 10, 10, 10), LS3)
         );
     }
 }

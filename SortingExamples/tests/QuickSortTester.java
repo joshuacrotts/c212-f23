@@ -31,6 +31,6 @@ class QuickSortTester {
                 () -> assertEquals(List.of(), LS2),
                 () -> ipqs.quicksort(LS3),
                 () -> assertEquals(List.of(2, 3, 3, 3, 6, 7, 8, 10, 10, 10), LS3)
-        )
+        );
     }
 }
