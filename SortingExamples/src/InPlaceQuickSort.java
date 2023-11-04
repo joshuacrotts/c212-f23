@@ -5,13 +5,6 @@ import java.util.Random;
 
 class InPlaceQuickSort<V extends Comparable<V>> implements IQuickSort<V> {
 
-    /**
-     * Sorts a given List, whose elements are comparable, in ascending order.
-     *
-     * @param ls the List to sort.
-     * @param <V extends Comparable<V>> the type of the elements in the List.
-     * @return a new List that is sorted in ascending order.
-     */
     @Override
     public AbstractList<V> quicksort(AbstractList<V> ls) {
         this.quicksortHelper(ls, 0, ls.size() - 1);

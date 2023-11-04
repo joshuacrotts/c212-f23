@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public interface IMergeSort {
+import java.util.AbstractList;
+
+interface IMergeSort<V extends Comparable<V>> {
+    AbstractList<V> mergeSort(AbstractList<V> ls);
 }
