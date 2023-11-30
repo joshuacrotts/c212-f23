@@ -1,7 +1,9 @@
 import java.util.AbstractList;
-import java.util.NoSuchElementException;
+import java.util.Comparator;
 
-interface ILinearSearch<V extends Comparable<V>> {
+interface ILinearSearch {
 
-    int linearSearch(AbstractList<V> ls, V v) throws NoSuchElementException;
+    <V extends Comparable<V>> int linearSearch(AbstractList<V> ls, V v);
+
+    <V> int linearSearch(AbstractList<V> ls, V v, Comparator<? super V> c);
 }
